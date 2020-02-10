@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="javascript2-event.js"></script>
+</head>
+<body>
+    <nav>
+        <a href="javascript1-dom.html">1. DOM 프로그래밍 예제</a>
+        <span>|</span>
+        <a href="javascript2-event.html">2. DOM 이벤트 프로그래밍 예제</a>
+    </nav>
+    <hr />    
+    <section id="section4">
+        <h1>EX 4-서로 다른 기능의 여러 버튼을 가진 화면에서 이벤트를 처리하는 방법</h1>
+        <table border="1" class="notice-list">
+            <thead>
+                <tr>
+                    <td>번호  </td>
+                    <td>제목  </td>
+                    <td>작성일</td>
+                    <td>작성자</td>
+                    <td>조회수</td>
+                    <td>관리  </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><a href="1">자바스크립트란..</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>2</td>
+                    <td>
+                        <a class="sel-button"  href="">선택</a:href>
+                        <a class="edit-button" href="">선택</a:href>
+                        <a class="del-button"  href="">선택</a:href>
+                        <!-- <input type="button" class="sel-button" value="선택" />
+                        <input type="button" class="edit-button" value="수정" />
+                        <input type="button" class="del-button" value="삭제" /> -->
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><a href="2">유투브에 끌려다니지 않으려고 했는데....ㅜㅜ..</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>0</td>
+                    <td>
+                        <input type="button" class="button sel-button" value="선택" />
+                        <input type="button" class="edit-button" value="수정" />
+                        <input type="button" class="del-button" value="삭제" />
+                    </td>
+                <tr>
+                    <td>3</td>
+                    <td><a href="3">기본기가 튼튼해야....</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>1</td>
+                    <td>
+                        <input type="button" class="sel-button" value="선택" />
+                        <input type="button" class="edit-button" value="수정" />
+                        <input type="button" class="del-button" value="삭제" />
+                    </td>
+                <tr>
+                    <td>4</td>
+                    <td><a href="4">근데 조회수가 ㅜㅜ..</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>0</td>
+                    <td>
+                        <input type="button" class="sel-button" value="선택" />
+                        <input type="button" class="edit-button" value="수정" />
+                        <input type="button" class="del-button" value="삭제" />
+                    </td>
+            </tbody>
+        </table>
+    </section>
+    <hr />
+    
+    <section id="section3">
+        <h1>Ex 3-이벤트 버블링 멈추기</h1>
+        <div class="img-list">
+            <img class="img" src="./images/img1.jpg" style="height: 50px;" />
+            <img class="img" src="./images/img2.jpg" style="height: 50px;" />
+            <img class="img" src="./images/img3.jpg" style="height: 50px;" />
+            <img class="img" src="./images/img4.jpg" style="height: 50px;" />
+            <input class="add-button" type="button" value="추가" />
+        </div>
+        <div>
+            <img class="current-img" src="images/img1.jpg" style="border:1px solid red;" />
+        </div>
+    </section>
+    <hr />  
+
+    <section id="section2-1">
+        <h1>연습문제 2-버블링을 이용한 사용자 이벤트 처리하기</h1>
+        <table border="1" class="notice-list">
+            <thead>
+                <tr>
+                    <td>번호</td>
+                    <td>제목</td>
+                    <td>작성일</td>
+                    <td>작성자</td>
+                    <td>조회수</td>
+                    <td>관리</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><a href="1">자바스크립트란..</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>2</td>
+                    <td><input type="button" class="del-button" value="삭제" /></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><a href="2">유투브에 끌려다니지 않으려고 했는데....ㅜㅜ..</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>0</td>
+                    <td><input type="button" class="del-button" value="삭제" /></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><a href="3">기본기가 튼튼해야....</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>1</td>
+                    <td><input type="button" class="del-button" value="삭제" /></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><a href="4">근데 조회수가 ㅜㅜ..</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>0</td>
+                    <td><input type="button" class="del-button" value="삭제" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <hr />
+
+    <section id="section2">
+        <h1>Ex 2-버블링을 이용한 사용자 이벤트 처리하기 </h1>
+        <div class="img-list">
+            <img class="img" src="./images/img1.jpg" style="height: 50px;" />
+            <img class="img" src="./images/img2.jpg" style="height: 50px;" />
+            <img class="img" src="./images/img3.jpg" style="height: 50px;" />
+            <img class="img" src="./images/img4.jpg" style="height: 50px;" />            
+        </div>
+        <div>
+            <img class="current-img" src="images/img1.jpg" style="border:1px solid red;" />
+        </div>
+    </section>
+    <hr />  
+
+    <section id="section1-1">
+        <h1>연습문제 1-선택된 레코드 삭제하기:event target</h1>
+        <table border="1" class="notice-list">
+            <thead>
+                <tr>
+                    <td>번호</td>
+                    <td>제목</td>
+                    <td>작성일</td>
+                    <td>작성자</td>
+                    <td>조회수</td>
+                    <td>관리</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><a href="1">자바스크립트란..</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>2</td>
+                    <td><input type="button" class="del-button" value="삭제" /></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><a href="2">유투브에 끌려다니지 않으려고 했는데....ㅜㅜ..</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>0</td>
+                    <td><input type="button" class="del-button" value="삭제" /></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><a href="3">기본기가 튼튼해야....</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>1</td>
+                    <td><input type="button" class="del-button" value="삭제" /></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><a href="4">근데 조회수가 ㅜㅜ..</a></td>
+                    <td>2019-01-25</td>
+                    <td>newlec</td>
+                    <td>0</td>
+                    <td><input type="button" class="del-button" value="삭제" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <hr />
+    
+    <section id="section1">
+        <h1>Ex 1-선택된 이미지 보여주기:event target </h1>
+        <div>
+            <img class="img" src="./images/img1.jpg" style="height: 50px;" />
+            <img class="img" src="./images/img2.jpg" style="height: 50px;" />
+            <img class="img" src="./images/img3.jpg" style="height: 50px;" />
+            <img class="img" src="./images/img4.jpg" style="height: 50px;" />            
+        </div>
+        <div>
+            <img class="current-img" src="images/img1.jpg" style="border:1px solid red;" />
+        </div>
+    </section>
+    <hr />
+</body>
+</html>
